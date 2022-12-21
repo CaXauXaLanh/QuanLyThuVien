@@ -2,8 +2,12 @@ a {
   text-decoration: none;
 }
 
+main {
+  background: url(https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80) !important;
+}
+
 .form-wrapper-login {
-  height: 456px;
+  height: 100vh;
   width: 396px;
   margin: 0 auto;
   margin-top: 10%;
@@ -12,6 +16,7 @@ a {
 .form-content {
   height: 360px;
   width: 400px;
+  padding: 8%;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
@@ -20,7 +25,7 @@ a {
 }
 
 .form-input {
-  padding-top: 19px;
+  padding-top: 8%;
 }
 
 .input-text {
@@ -39,7 +44,7 @@ a {
 
 .input-text input:focus {
   outline: 0px;
-  border: 2px solid #1877f2;
+  border: 2px solid green;
 }
 
 .form-submit-login {
@@ -48,7 +53,7 @@ a {
 
 .form-submit-login button {
   color: #f0f2f5;
-  background-color: #1877f2;
+  background-color: green;
   border: none;
   border-radius: 6px;
   font-size: 20px;
@@ -57,10 +62,11 @@ a {
   width: 332px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.4s ease-in-out;
 }
 
 .form-submit-login button:hover {
-  background-color: #166fe5;
+  background-color: rgb(6, 166, 6);
 }
 
 .form-submit-sign-up {
@@ -82,26 +88,4 @@ a {
 .form-submit-sign-up a:hover {
   background-color: #36a420;
   border-color: #36a420;
-}
-
-.form-line {
-  border-bottom: 1px solid #dadde1;
-  display: flex;
-  margin: 20px 16px;
-  text-align: center;
-}
-
-.form-footer {
-  color: #1c1e21;
-  font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  margin-top: 28px;
-  text-align: center;
-}
-
-.form-footer a {
-  font-family: SFProText-Semibold, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  text-align: center;
 }
