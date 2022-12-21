@@ -6,6 +6,10 @@ const CallCard = require("../models/CallCard");
 require("dotenv").config();
 const uri = process.env.URI;
 const jwt = require('jsonwebtoken')
+const {
+    mongooseToObject,
+    mutipleMongooseToObject,
+} = require("../../util/mongoose");
 
 const client = new MongoClient(uri);
 
@@ -81,7 +85,7 @@ class SiteController {
         newBook
             .save()
             .then(() => {
-                res.redirect("/admin/user");
+                res.redirect("/admin/book");
             })
             .catch((err) => {
                 console.error(err);
@@ -173,9 +177,6 @@ class SiteController {
     }
 
     postCreateCallCard(req, res) {
-
-        
-
         let newCallCard = new CallCard({
             userid: req.body.userid,
             idCard: req.body.idCard,
@@ -188,6 +189,17 @@ class SiteController {
             res.redirect("/admin/callcard")
         }).catch(err => {console.log(err)});
     }
+
+    getUpdateUser(req, res) {
+        let userID = req.params.userid
+        User.findOne({userid: userID})
+        .then((user) => {
+            res.render('update/user', {
+                user: mongooseToObject(user)
+            })
+        }).catch((err) => {console.log(err)});
+    }
+
 }
 
 module.exports = new SiteController();

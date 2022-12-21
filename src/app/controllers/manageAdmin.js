@@ -61,6 +61,17 @@ class AdminManager {
             });
     }
 
+    deleteBook(req, res) {
+        let bookID = req.params.bookid;
+        Book.deleteOne({ bookid: bookID })
+            .then(() => {
+                res.redirect("/admin/book");
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     callCardManager(req, res) {
         if (!req.cookies.accessToken) {
             return res.redirect('/')
