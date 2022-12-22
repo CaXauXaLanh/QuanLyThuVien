@@ -191,6 +191,17 @@ class SiteController {
     }
 
     getUpdateUser(req, res) {
+
+        if (!req.cookies.accessToken) {
+            return res.redirect('/')
+        }
+        const decode = jwt.verify(req.cookies.accessToken, 'secretkey')
+        User.findOne({_id: decode.id}, function(err, user) {
+            if (user.type != 'admin') {
+                return res.clearCookie('accessToken').redirect('/')
+            }
+        })
+
         let userID = req.params.userid
         User.findOne({userid: userID})
         .then((user) => {
@@ -200,6 +211,64 @@ class SiteController {
         }).catch((err) => {console.log(err)});
     }
 
+    postUpdateUser (req, res) {
+        let {userid, personName, phone, location, username} = req.body
+        User.findOneAndUpdate({userid: userid}, {personName: personName, phone: phone, location: location, username: username})
+        .then(() => {
+            res.redirect('/admin/user')
+        }).catch(err => {
+            res.send(err.message)
+        })
+    }
+
+    getUpdateBook (req, res) {
+        if (!req.cookies.accessToken) {
+            return res.redirect('/')
+        }
+        const decode = jwt.verify(req.cookies.accessToken, 'secretkey')
+        User.findOne({_id: decode.id}, function(err, user) {
+            if (user.type != 'admin') {
+                return res.clearCookie('accessToken').redirect('/')
+            }
+        })
+
+        let bookid = req.params.bookid
+        Book.findOne({bookid: bookid}).then(book => {
+            res.render('update/book', {
+                book: mongooseToObject(book)
+            })
+        }).catch(err => {   
+            res.send(err.message)
+        })
+    }
+
+    postUpdateBook (req, res) {
+        let bookid = req.body.bookid,
+            bookName = req.body.bookName,
+            bookCategory = req.body.bookCategory,
+            author = req.body.author,
+            publicationDate = req.body.publicationDate,
+            amount = req.body.amount,
+            bookThumbnail
+        if(req.file) {
+            bookThumbnail = "/img/" + req.file.filename
+        }
+        if (req.file){
+            Book.findOneAndUpdate({bookid: bookid}, {bookName: bookName, bookCategory: bookCategory, author: author, publicationDate: publicationDate, amount: amount, bookThumbnail: bookThumbnail})
+            .then(() => {
+                res.redirect('/admin/book')
+            }).catch(err => {
+                res.send(err.message)
+            });
+        } else {
+            Book.findOneAndUpdate({bookid: bookid}, {bookName: bookName, bookCategory: bookCategory, author: author, publicationDate: publicationDate, amount: amount})
+            .then(() => {
+                res.redirect('/admin/book')
+            }).catch(err => {
+                res.send(err.message)
+            });
+        }
+    }
 }
 
 module.exports = new SiteController();

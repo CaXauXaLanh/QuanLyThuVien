@@ -52,7 +52,7 @@ class AdminManager {
         })
         Book.find({})
             .then((bookData) => {
-                res.render("admin/book", {
+                res.render("admin/book1", {
                     bookData: mutipleMongooseToObject(bookData),
                 });
             })
