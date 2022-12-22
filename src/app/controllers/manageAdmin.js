@@ -52,7 +52,7 @@ class AdminManager {
         })
         Book.find({})
             .then((bookData) => {
-                res.render("admin/book1", {
+                res.render("admin/book", {
                     bookData: mutipleMongooseToObject(bookData),
                 });
             })
@@ -72,6 +72,16 @@ class AdminManager {
             });
     }
 
+    deleteCallCard(req, res) {
+        let cardID = req.params.cardID
+        CallCard.deleteOne({idCard: cardID})
+            .then(() => {
+                res.redirect("/admin/callcard");
+            }).catch((err) => {
+                res.send(err.message);
+        });
+    }
+
     callCardManager(req, res) {
         if (!req.cookies.accessToken) {
             return res.redirect('/')
@@ -83,7 +93,7 @@ class AdminManager {
             }
         })
         CallCard.find({}).then((ccdata) => {
-            res.render('admin/callcard', {
+            res.render('admin/callcard1', {
                 ccdata: mutipleMongooseToObject(ccdata)
             })
         }).catch(err => {
