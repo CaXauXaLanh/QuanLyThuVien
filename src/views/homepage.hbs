@@ -30,7 +30,11 @@
                   <button type="submit" name="login">Đăng nhập</button>
                 </div>
 
-                <div class="form-line"></div>
+                <div class="form-line">
+                  {{#if error}}
+                      <p>Sai tên đăng nhập hoặc mật khẩu</p>
+                  {{/if}}
+                </div>
                 
               </div>
             </form>

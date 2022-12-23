@@ -28,6 +28,8 @@ class authController {
                     sameSite: "strict"
                 })
                 res.redirect('/admin/user')
+            } else {
+                res.send('<script>alert("Sai tên đăng nhập hoặc mật khẩu"); window.location.href = "/"; </script>');
             }
         } catch (err) {
             res.status(500).send(err.message)
