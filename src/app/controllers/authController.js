@@ -7,8 +7,11 @@ class authController {
         try {
             
             const user = await User.findOne({username: req.body.username})
+            if (!user) {
+                return res.send('<script>alert("Sai tên đăng nhập hoặc mật khẩu"); window.location.href = "/"; </script>');
+            }
             if (user.type != 'admin') {
-                return res.status(400).redirect('/')
+                return res.send('<script>alert("Sai tên đăng nhập hoặc mật khẩu"); window.location.href = "/"; </script>');
                 
             }
             const validPassword = await bcrypt.compare(

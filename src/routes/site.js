@@ -11,7 +11,6 @@ router.get("/update/user/:userid", siteController.getUpdateUser)
 router.post("/update-user", siteController.postUpdateUser)
 router.get("/update/book/:bookid", siteController.getUpdateBook)
 router.post("/update-book", upload.single("bookThumbnail"), siteController.postUpdateBook)
-router.get("/search", siteController.search);
 router.post("/login", authController.userLogin);
 router.get("/logout", authController.userLogout);
 router.get("/", siteController.index);

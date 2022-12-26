@@ -92,66 +92,7 @@ class SiteController {
             });
     }
 
-    async search(req, res) {
-        // try {
-        //     await client.connect();
-        //     const database = client.db("QuanLyThuVien");
-        //     const coll = database.collection("users");
-        //     let result = await coll
-        //         .aggregate([
-        //             {
-        //                 $search: {
-        //                     autocomplete: {
-        //                         query: `${req.query.term}`,
-        //                         path: "userid",
-        //                         fuzzy: {
-        //                             maxEdits: 1,
-        //                         },
-        //                     },
-        //                 },
-        //                 //
-        //             },
-        //             { $project: { _id: 0, userid: 1, personName: 1 } },
-        //             { $match: { type: { $ne: "admin" } } },
-        //         ])
-        //         .toArray();
-        //     res.json(result);
-        // } catch (error) {
-        //     res.status(500).send(error.message);
-        // } finally {
-        //     await client.close();
-        // }
-    }
-
     async getCreateCallCard(req, res) {
-        // try {
-        //     await client.connect();
-        //     const database = client.db("QuanLyThuVien");
-        //     const coll = database.collection("users");
-        //     let result = await coll
-        //         .aggregate([
-        //             {
-        //                 $search: {
-        //                     autocomplete: {
-        //                         query: `DG`,
-        //                         path: "userid",
-        //                         fuzzy: {
-        //                             maxEdits: 1,
-        //                         },
-        //                     },
-        //                 },
-
-        //                 //
-        //             },
-        //             { $project: { _id: 0, userid: 1 } },
-        //         ])
-        //         .toArray();
-        //     res.send(result);
-        // } catch (error) {
-        //     res.status(500).send(error.message);
-        // } finally {
-        //     await client.close();
-        // }
         if (!req.cookies.accessToken) {
             return res.redirect('/')
         }

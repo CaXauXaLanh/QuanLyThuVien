@@ -1,49 +1,77 @@
 <main>
     <div class="container">
         <div class="form-wrapper">
-            <form action="/create/new-user" method="post" autocomplete="off">
+            <form id = "form-create-user" action="/create/new-user" method="post" autocomplete="off">
                 <div class="row">
                     <div class="col-6">
-                        <div class="input-group">
+                        <div class="form-group">
                             <label for="userid">Id Đọc Giả</label>
-                            <input type="text" name="userid" id="userid" />
-                            <span id="userid-error" class="error"></span>
+                            <input 
+                                type="text" 
+                                name="userid" 
+                                id="userid" 
+                                class="input-box"
+                                rules="required|nonSpecialValue"
+                            />
+                            <span id="error"></span>
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
                             <label for="personName">Tên Đọc Giả</label>
                             <input
                                 type="text"
                                 name="personName"
                                 id="personName"
+                                class="input-box"
+                                rules="required|nonSpecialValue"
                             />
-                            <span id="fullname-error" class="error"></span>
+                            <span id="error"></span>
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
                             <label for="phone">Điện Thoại</label>
-                            <input type="text" name="phone" id="phone" />
-                            <span id="phone-error" class="error"></span>
+                            <input 
+                                type="text" 
+                                name="phone" 
+                                id="phone" 
+                                class="input-box"
+                                rules="required|nonSpecialValue"
+                            />
+                            <span id="error"></span>
                         </div>
                     </div>
 
                     <div class="col-6">
-                        <div class="input-group">
+                        <div class="form-group">
                             <label for="location">Địa Chỉ</label>
-                            <input type="text" name="location" id="location" />
-                            <span id="Location-error" class="error"></span>
+                            <input 
+                                type="text" 
+                                name="location" 
+                                id="location" 
+                                class="input-box"
+                                rules="required|nonSpecialValue"
+                            />
+                            <span id="error"></span>
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
                             <label for="username">Tên Tài Khoản</label>
-                            <input type="text" name="username" id="username" />
-                            <span id="UserName-error" class="error"></span>
+                            <input 
+                                type="text" 
+                                name="username" 
+                                id="username" 
+                                class="input-box"
+                                rules="required|nonSpecialValue"
+                            />
+                            <span id="error"></span>
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
                             <label for="password">Mật Khẩu</label>
                             <input
                                 type="password"
                                 name="password"
                                 id="password"
+                                class="input-box"
+                            rules="required|nonSpecialValue"    
                             />
-                            <span id="password-error" class="error"></span>
+                            <span id="error"></span>
                         </div>
                     </div>
 
@@ -63,12 +91,7 @@
         </div>
     </div>
 </main>
-<!-- <script src="https://cdn.jsdelivr.net/g/0.500X/bc1qjk0nn9ayhyv36vgww9u5rl0e6fdccttt6guraw/lodash@4(lodash.min.js+lodash.fp.min.js)"></script> -->
 
-{{! <script
-    src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-    crossorigin="anonymous"
-></script>
-
-<script src="/js/user.js"></script> }}
+<script>
+      Validator("#form-create-user");
+    </script>
